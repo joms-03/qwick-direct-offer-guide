@@ -79,7 +79,7 @@
     background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius);
     box-shadow:var(--shadow);
     padding:26px 28px;
-    margin:-40px 0 40px;
+    margin:28px 0 40px;
     position:relative;
   }
   .intro-card h2{margin:0 0 10px;font-size:18px;}
@@ -247,6 +247,29 @@
 
   footer{max-width:900px;margin:60px auto 0;padding:24px;text-align:center;color:var(--gray-500);font-size:12.5px;border-top:1px solid var(--gray-200);}
   .toc-title{font-size:12px;font-weight:800;color:var(--gray-500);text-transform:uppercase;margin:0 0 6px;}
+
+  /* Slack mockup */
+  .slack-wrap{display:flex;border:1px solid var(--gray-200);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);background:#fff;}
+  .slack-side{width:180px;background:#3f0e40;color:#fff;font-size:11.5px;padding:12px 0;flex:0 0 auto;}
+  .slack-side .wsp{padding:0 14px 10px;font-weight:800;font-size:13px;border-bottom:1px solid rgba(255,255,255,.15);margin-bottom:8px;}
+  .slack-side .ch{padding:6px 14px;color:#cfc3d1;display:flex;align-items:center;gap:6px;}
+  .slack-side .ch.active{background:#1264a3;color:#fff;font-weight:700;}
+  .slack-side .lock{opacity:.75;font-size:10px;}
+  .slack-main{flex:1;padding:16px;background:#fff;}
+  .slack-msg{display:flex;gap:10px;}
+  .slack-avatar{width:36px;height:36px;border-radius:8px;background:linear-gradient(135deg,#36c5f0,#2eb67d);flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:16px;}
+  .slack-body{flex:1;}
+  .slack-body .name-row{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap;}
+  .slack-body b.name{font-size:13px;color:var(--ink);}
+  .slack-body .wf-tag{font-size:9px;background:var(--gray-100);color:var(--gray-500);padding:2px 6px;border-radius:4px;font-weight:800;letter-spacing:.3px;}
+  .slack-body .time{font-size:10.5px;color:var(--gray-500);}
+  .slack-body .text{font-size:12.5px;color:var(--ink);margin-top:6px;line-height:1.6;}
+  .slack-body .text b{color:var(--ink);}
+  .slack-body a{color:#1264a3;text-decoration:underline;word-break:break-all;}
+  .slack-reactions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}
+  .reaction{border:1px solid var(--gray-300);border-radius:14px;padding:3px 9px;font-size:11.5px;display:flex;gap:5px;align-items:center;background:var(--gray-50);color:var(--gray-700);}
+  .reaction.hl{border-color:var(--green);background:var(--green-light);color:var(--green-dark);font-weight:700;}
+  .reaction.add{color:var(--gray-500);font-weight:700;padding:3px 7px;}
 </style>
 </head>
 <body>
@@ -257,24 +280,25 @@
     <h1 class="title">Sending a Direct Offer to Fill a Shift</h1>
     <p class="hero-sub">A step-by-step walkthrough for building a targeted pro list in Tableau and pushing a Direct Offer to fill an unfilled or under-staffed shift.</p>
     <div class="meta-row">
-      <span class="meta-pill">⏱ ~10 minutes</span>
+      <span class="meta-pill">⏱ ~12 minutes</span>
       <span class="meta-pill">🔑 Admin access required</span>
-      <span class="meta-pill">🧰 Qwick Admin + Tableau</span>
+      <span class="meta-pill">🧰 Slack + Qwick Admin + Tableau</span>
     </div>
   </div>
 </header>
 
 <nav class="steps-nav">
   <div class="nav-inner">
-    <a href="#step1">1. Find the shift</a>
-    <a href="#step2">2. Open Pro Export</a>
-    <a href="#step3">3. Filter market &amp; skill</a>
-    <a href="#step4">4. Set quality filters</a>
-    <a href="#step5">5. Export the list</a>
-    <a href="#step6">6. Grab the Pro IDs</a>
-    <a href="#step7">7. Open Shift Options</a>
-    <a href="#step8">8. Send the offer</a>
-    <a href="#step9">9. Confirm it worked</a>
+    <a href="#step1">1. Claim the Slack request</a>
+    <a href="#step2">2. Find the shift</a>
+    <a href="#step3">3. Open Pro Export</a>
+    <a href="#step4">4. Filter market &amp; skill</a>
+    <a href="#step5">5. Set quality filters</a>
+    <a href="#step6">6. Export the list</a>
+    <a href="#step7">7. Grab the Pro IDs</a>
+    <a href="#step8">8. Open Shift Options</a>
+    <a href="#step9">9. Send the offer</a>
+    <a href="#step10">10. Confirm it worked</a>
   </div>
 </nav>
 
@@ -286,6 +310,7 @@
       <div>
         <h3>What you'll need</h3>
         <ul>
+          <li>Access to the <b>#magic-pro-support</b> Slack channel</li>
           <li>Access to the shift in <b>View Shifts</b> (biz.qwick.com/admin)</li>
           <li>Access to the <b>Pro Export</b> Tableau dashboard</li>
           <li>Admin permissions to send a Direct Offer</li>
@@ -294,8 +319,8 @@
       <div>
         <h3>When to use this</h3>
         <ul>
-          <li>A shift is showing as <b>Unfilled</b>, or applicants have cancelled</li>
-          <li>You want to proactively target qualified, high-rated pros instead of waiting on the open marketplace</li>
+          <li>A "Fill a Shift Request" lands in <b>#magic-pro-support</b>, or a shift is showing as <b>Unfilled</b></li>
+          <li>Applicants have cancelled and you want to proactively target qualified, high-rated pros instead of waiting on the open marketplace</li>
         </ul>
       </div>
     </div>
@@ -305,9 +330,52 @@
   <section class="step" id="step1">
     <div class="step-head">
       <div class="step-num">1</div>
+      <h2>Claim the request in Slack</h2>
+    </div>
+    <p class="step-desc">Fill requests often come in through <b>#magic-pro-support</b> as a <b>"V3 Fill a Shift Request"</b> workflow message. It shows who submitted it, a link straight to that shift's <b>Applicants</b> page, the Auto-Select / Overfill settings, and any special notes (e.g. "boost and max offers").</p>
+
+    <div class="frame-wrap">
+      <div class="slack-wrap">
+        <div class="slack-side">
+          <div class="wsp">Pro Success</div>
+          <div class="ch">#&nbsp;at-risk-pro-alerts</div>
+          <div class="ch active"><span class="lock">🔒</span> magic-pro-support</div>
+          <div class="ch">#&nbsp;cx-helper</div>
+          <div class="ch"><span class="lock">🔒</span> magic-mops-requests</div>
+        </div>
+        <div class="slack-main">
+          <div class="slack-msg">
+            <div class="slack-avatar">🧩</div>
+            <div class="slack-body">
+              <div class="name-row"><b class="name">V3 Fill a Shift Request</b><span class="wf-tag">WORKFLOW</span></div>
+              <div class="text">
+                Fill a Gig Request from shift on 2026-07-13 submitted by <b>@Josh Mousseau</b>:<br>
+                <a href="#">biz.qwick.com/locations/28119/gigs/1603247/applicants</a><br><br>
+                Enable Auto-Select: Yes<br>
+                Enable Overfill (if applicable): Yes<br><br>
+                <b>Special Requests:</b><br>
+                Instawork dropped the ball, please boost and max offers - Opryland needs help closing tonight.
+              </div>
+              <div class="slack-reactions">
+                <div class="reaction hl">🫡 on it · 1</div>
+                <div class="reaction add">+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="arrow-tag">React with 🫡 "on it" first — this tells the team you've claimed it so nobody double-works the request</div>
+    </div>
+    <div class="callout warn">Always react before clicking the link. If someone else already reacted, don't work the request — check with them first to avoid sending duplicate offers.</div>
+  </section>
+
+  <!-- STEP 2 -->
+  <section class="step" id="step2">
+    <div class="step-head">
+      <div class="step-num">2</div>
       <h2>Find the shift that needs pros</h2>
     </div>
-    <p class="step-desc">Open <b>View Shifts</b> and locate the shift you need to fill. Expand the row to see current applicants — here, one pro (Luther Royal) is <b>Confirmed</b> but three others cancelled, leaving the position <b>Unfilled</b>.</p>
+    <p class="step-desc">Click the link from the Slack message — it opens directly to that shift's <b>Applicants</b> page on <code>biz.qwick.com</code>. (If you're starting from View Shifts instead, locate the shift and expand the row to see current applicants.) Here, one pro (Luther Royal) is <b>Confirmed</b> but three others cancelled, leaving the position <b>Unfilled</b>.</p>
 
     <div class="frame-wrap">
       <div class="browser">
@@ -336,10 +404,10 @@
     </div>
   </section>
 
-  <!-- STEP 2 -->
-  <section class="step" id="step2">
+  <!-- STEP 3 -->
+  <section class="step" id="step3">
     <div class="step-head">
-      <div class="step-num">2</div>
+      <div class="step-num">3</div>
       <h2>Open the Pro Export dashboard in Tableau</h2>
     </div>
     <p class="step-desc">In a new tab, go to <code>Explore → Qwick Internal → Pro Health → Pro Tracking</code> and select the <b>Pro Export</b> tab. This dashboard lets you build a custom list of pros filtered by market, skillset, and quality metrics.</p>
@@ -358,10 +426,10 @@
     </div>
   </section>
 
-  <!-- STEP 3 -->
-  <section class="step" id="step3">
+  <!-- STEP 4 -->
+  <section class="step" id="step4">
     <div class="step-head">
-      <div class="step-num">3</div>
+      <div class="step-num">4</div>
       <h2>Filter by market and skillset</h2>
     </div>
     <p class="step-desc">Set the <b>Market</b> filter to match the shift's location (e.g. <i>Los Angeles-Long Beach, CA</i>), then set the <b>Skillset Badge / Exp</b> filters to the position you're filling — in this case, <i>Dishwasher</i>.</p>
@@ -389,10 +457,10 @@
     <div class="callout tip">The Skillset Exp columns act as OR filters — set any of them to Dishwasher to catch pros with that experience in any slot.</div>
   </section>
 
-  <!-- STEP 4 -->
-  <section class="step" id="step4">
+  <!-- STEP 5 -->
+  <section class="step" id="step5">
     <div class="step-head">
-      <div class="step-num">4</div>
+      <div class="step-num">5</div>
       <h2>Narrow it down with quality sliders</h2>
     </div>
     <p class="step-desc">Use the sliders to only pull pros who meet your bar for reliability — for example, at least 1 paid gig, a 4.0+ average rating, and 80%+ completion rate, active within the <b>Last 90 days</b>.</p>
@@ -411,10 +479,10 @@
     </div>
   </section>
 
-  <!-- STEP 5 -->
-  <section class="step" id="step5">
+  <!-- STEP 6 -->
+  <section class="step" id="step6">
     <div class="step-head">
-      <div class="step-num">5</div>
+      <div class="step-num">6</div>
       <h2>Export the filtered list</h2>
     </div>
     <p class="step-desc">Click the <b>download icon</b> in the top toolbar and choose <b>Crosstab</b>. In the dialog, select the <b>Export File</b> sheet and download as <b>CSV</b> (or Excel).</p>
@@ -439,10 +507,10 @@
     </div>
   </section>
 
-  <!-- STEP 6 -->
-  <section class="step" id="step6">
+  <!-- STEP 7 -->
+  <section class="step" id="step7">
     <div class="step-head">
-      <div class="step-num">6</div>
+      <div class="step-num">7</div>
       <h2>Grab the Pro IDs from the exported file</h2>
     </div>
     <p class="step-desc">Open the downloaded file. The first column, <b>Id</b>, is the Pro ID for each row — this is the list you'll paste into the Direct Offer tool. Copy the full <b>Id</b> column (minus the header).</p>
@@ -462,10 +530,10 @@
     </div>
   </section>
 
-  <!-- STEP 7 -->
-  <section class="step" id="step7">
+  <!-- STEP 8 -->
+  <section class="step" id="step8">
     <div class="step-head">
-      <div class="step-num">7</div>
+      <div class="step-num">8</div>
       <h2>Open Shift Options for the shift</h2>
     </div>
     <p class="step-desc">Back in <b>View Shifts</b>, click the <b>⚙️ gear icon</b> on the shift row to open <b>Shift Options</b>. Scroll to the <b>Admin-only</b> section — this is where the Direct Offer tool lives.</p>
@@ -488,10 +556,10 @@
     </div>
   </section>
 
-  <!-- STEP 8 -->
-  <section class="step" id="step8">
+  <!-- STEP 9 -->
+  <section class="step" id="step9">
     <div class="step-head">
-      <div class="step-num">8</div>
+      <div class="step-num">9</div>
       <h2>Paste the Pro IDs and send the offer</h2>
     </div>
     <p class="step-desc">In the <b>Admin offer</b> modal, paste the Pro IDs you copied in Step 6 into the <b>Pro IDs</b> box — duplicates are removed automatically. Add an optional <b>Bonus</b> to sweeten the offer, review the checkboxes, then click <b>Send offer</b>.</p>
@@ -512,10 +580,10 @@
     </div>
   </section>
 
-  <!-- STEP 9 -->
-  <section class="step" id="step9">
+  <!-- STEP 10 -->
+  <section class="step" id="step10">
     <div class="step-head">
-      <div class="step-num">9</div>
+      <div class="step-num">10</div>
       <h2>Confirm the offers went out</h2>
     </div>
     <p class="step-desc">You may see a yellow banner saying <b>"Some direct offers failed to send"</b> — that's expected when a few pasted IDs are ineligible, duplicate, or already assigned elsewhere; the rest still go through. Head to the shift's <b>Applicants</b> page to verify.</p>
