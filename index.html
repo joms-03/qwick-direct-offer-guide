@@ -270,6 +270,48 @@
   .reaction{border:1px solid var(--gray-300);border-radius:14px;padding:3px 9px;font-size:11.5px;display:flex;gap:5px;align-items:center;background:var(--gray-50);color:var(--gray-700);}
   .reaction.hl{border-color:var(--green);background:var(--green-light);color:var(--green-dark);font-weight:700;}
   .reaction.add{color:var(--gray-500);font-weight:700;padding:3px 7px;}
+
+  /* Command Center mockup */
+  .cc-card{border:1px solid var(--gray-200);border-radius:12px;box-shadow:var(--shadow);background:#fff;padding:16px;}
+  .cc-title{font-size:14px;font-weight:800;margin-bottom:8px;color:var(--ink);}
+  .cc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;}
+  .cc-tag{font-size:9.5px;font-weight:800;padding:3px 8px;border-radius:5px;letter-spacing:.3px;}
+  .cc-tag.danger{background:#fdeaea;color:var(--red);}
+  .cc-tag.dark{background:#111418;color:#fff;}
+  .cc-tag.green{background:var(--green-light);color:var(--green-dark);}
+  .cc-tag.gray{background:var(--gray-100);color:var(--gray-500);}
+  .cc-meta{font-size:11px;color:var(--gray-700);margin-bottom:10px;line-height:1.6;}
+  .cc-alert{border-radius:8px;padding:9px 12px;font-size:11.5px;font-weight:600;margin-bottom:8px;line-height:1.5;}
+  .cc-alert.danger{background:#fdeaea;color:#b91c1c;}
+  .cc-alert.ok{background:var(--green-light);color:var(--green-dark);}
+  .cc-alert.info{background:#e8edff;color:#1d4ed8;}
+  .cc-fill{display:flex;align-items:center;gap:10px;margin:12px 0;font-size:12px;font-weight:700;color:var(--ink);}
+  .cc-fillbar{flex:1;height:6px;background:var(--gray-200);border-radius:3px;overflow:hidden;}
+  .cc-fillbar .f{height:100%;background:var(--green);}
+
+  .cc-filters-pop{border:2px solid var(--blue);border-radius:8px;background:#fff;box-shadow:var(--shadow);padding:12px;width:220px;font-size:11px;}
+  .cc-filters-pop .fl{margin-bottom:9px;}
+  .cc-filters-pop .fl label{display:block;font-size:9px;color:var(--gray-500);font-weight:700;text-transform:uppercase;margin-bottom:2px;}
+  .cc-filters-pop .fl .in{border:1px solid var(--gray-300);border-radius:5px;padding:5px 7px;color:var(--gray-500);}
+
+  .cc-bulkbar{display:flex;align-items:center;justify-content:space-between;background:var(--gray-50);border:1px solid var(--gray-200);border-radius:8px;padding:8px 12px;font-size:12px;margin-bottom:10px;}
+  .cc-bulkbar b{color:var(--green-dark);}
+  .cc-row{display:flex;align-items:center;gap:10px;border:1px solid var(--gray-200);border-radius:8px;padding:8px 10px;margin-bottom:6px;font-size:11px;}
+  .cc-row .av{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#7c3aed,#db2777);flex:0 0 auto;}
+  .cc-row .nm{font-weight:700;font-size:12px;color:var(--ink);min-width:80px;}
+  .cc-row .tg{font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px;background:var(--gray-100);color:var(--gray-500);}
+  .cc-row .tg.risky{background:#fff2e0;color:#b45309;}
+  .cc-row .meta2{color:var(--gray-500);flex:1;}
+  .cc-row .send{background:var(--green);color:#fff;font-size:10px;font-weight:700;padding:5px 10px;border-radius:6px;white-space:nowrap;}
+
+  /* Section divider for alternative path */
+  .divider{margin:64px 0 32px;text-align:center;position:relative;}
+  .divider .line{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--gray-200);}
+  .divider .lbl{position:relative;background:var(--gray-50);padding:0 16px;font-size:12px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:var(--gray-500);display:inline-block;}
+  .alt-note{max-width:900px;margin:0 0 40px;background:#fff;border:1px solid var(--gray-200);border-radius:10px;padding:16px 20px;font-size:13.5px;color:var(--gray-700);box-shadow:var(--shadow);}
+
+  .callout.roadmap{background:#eef2ff;border-color:#c7d2fe;border-left-color:#4f46e5;color:#3730a3;}
+  .callout.roadmap::before{content:"Roadmap note — ";font-weight:700;}
 </style>
 </head>
 <body>
@@ -278,11 +320,11 @@
   <div class="hero-inner">
     <div class="brand"><span class="dot"></span> Qwick Admin Playbook</div>
     <h1 class="title">Sending a Direct Offer to Fill a Shift</h1>
-    <p class="hero-sub">A step-by-step walkthrough for building a targeted pro list in Tableau and pushing a Direct Offer to fill an unfilled or under-staffed shift.</p>
+    <p class="hero-sub">A step-by-step walkthrough for finding qualified pros in Command Center and pushing a Direct Offer to fill an unfilled or under-staffed shift — plus a Tableau-based alternative for when you need a bigger custom list.</p>
     <div class="meta-row">
       <span class="meta-pill">⏱ ~12 minutes</span>
       <span class="meta-pill">🔑 Admin access required</span>
-      <span class="meta-pill">🧰 Slack + Qwick Admin + Tableau</span>
+      <span class="meta-pill">🧰 Slack + Qwick Admin + Command Center</span>
     </div>
   </div>
 </header>
@@ -291,14 +333,18 @@
   <div class="nav-inner">
     <a href="#step1">1. Claim the Slack request</a>
     <a href="#step2">2. Find the shift</a>
-    <a href="#step3">3. Open Pro Export</a>
-    <a href="#step4">4. Filter market &amp; skill</a>
-    <a href="#step5">5. Set quality filters</a>
-    <a href="#step6">6. Export the list</a>
-    <a href="#step7">7. Grab the Pro IDs</a>
-    <a href="#step8">8. Open Shift Options</a>
-    <a href="#step9">9. Send the offer</a>
-    <a href="#step10">10. Confirm it worked</a>
+    <a href="#step3">3. Open Command Center</a>
+    <a href="#step4">4. Read the diagnostics</a>
+    <a href="#step5">5. Filter candidates</a>
+    <a href="#step6">6. Send offers in bulk</a>
+    <a href="#step7">Alt: Open Pro Export</a>
+    <a href="#step8">Alt: Filter market &amp; skill</a>
+    <a href="#step9">Alt: Set quality filters</a>
+    <a href="#step10">Alt: Export the list</a>
+    <a href="#step11">Alt: Grab the Pro IDs</a>
+    <a href="#step12">Alt: Open Shift Options</a>
+    <a href="#step13">Alt: Paste &amp; send</a>
+    <a href="#step14">14. Confirm it worked</a>
   </div>
 </nav>
 
@@ -312,15 +358,16 @@
         <ul>
           <li>Access to the <b>#magic-pro-support</b> Slack channel</li>
           <li>Access to the shift in <b>View Shifts</b> (biz.qwick.com/admin)</li>
-          <li>Access to the <b>Pro Export</b> Tableau dashboard</li>
-          <li>Admin permissions to send a Direct Offer</li>
+          <li>Admin permissions to open <b>Command Center</b> and send a Direct Offer</li>
+          <li>Access to the <b>Pro Export</b> Tableau dashboard — only needed for the alternative path below</li>
         </ul>
       </div>
       <div>
         <h3>When to use this</h3>
         <ul>
           <li>A "Fill a Shift Request" lands in <b>#magic-pro-support</b>, or a shift is showing as <b>Unfilled</b></li>
-          <li>Applicants have cancelled and you want to proactively target qualified, high-rated pros instead of waiting on the open marketplace</li>
+          <li>Start with <b>Command Center</b> — it lives inside the admin site, needs no separate license, and already surfaces a scored, filterable pool of candidates</li>
+          <li>Fall back to the <b>Tableau</b> path only if Command Center's pool doesn't have enough qualified pros, or you need a much broader custom list</li>
         </ul>
       </div>
     </div>
@@ -408,6 +455,125 @@
   <section class="step" id="step3">
     <div class="step-head">
       <div class="step-num">3</div>
+      <h2>Open Command Center</h2>
+    </div>
+    <p class="step-desc">From the shift row, click the <b>⚙️ gear icon</b> to open <b>Shift Options</b>, then under the <b>Admin-only</b> section click <b>"Open in Command Center."</b> This drops you into a live, per-shift dashboard — no Tableau license required, since it's built directly into the admin site.</p>
+
+    <div class="frame-wrap">
+      <div class="shift-modal">
+        <div class="head" style="display:flex;justify-content:space-between;"><b>Shift Options</b><span style="color:var(--gray-300);">✕</span></div>
+        <div class="row"><span>ℹ️ Details</span><span class="arrow">›</span></div>
+        <div class="row"><span>✏️ Edit</span><span class="arrow">›</span></div>
+        <div class="row"><span>✈️ Send Direct offer</span><span class="arrow">›</span></div>
+        <div class="row"><span>📎 Bundle shifts</span><span class="arrow">›</span></div>
+        <div class="row"><span>✕ Cancel</span><span class="arrow">›</span></div>
+        <div class="admin-label">ADMIN-ONLY</div>
+        <div class="row admin"><span><span class="adm-tag">⚙ Admin</span>✈️ Direct offer</span><span class="arrow">›</span></div>
+        <div class="row"><span><span class="adm-tag">⚙ Admin</span>✏️ Boost</span><span class="arrow">›</span></div>
+        <div class="row"><span><span class="adm-tag">⚙ Admin</span>👥 Edit number of pros</span><span class="arrow">›</span></div>
+        <div class="row admin hl"><span><span class="adm-tag">⚙ Admin</span>📈 Open in Command Center</span><span class="arrow">›</span></div>
+      </div>
+      <div class="arrow-tag">biz.qwick.com/admin/command-center?gig_id=1603247</div>
+    </div>
+  </section>
+
+  <!-- STEP 4 -->
+  <section class="step" id="step4">
+    <div class="step-head">
+      <div class="step-num">4</div>
+      <h2>Read the shift diagnostics</h2>
+    </div>
+    <p class="step-desc">Command Center opens straight to that shift and tells you exactly why it's struggling. Look at the status tags, the fill progress, the colored alert banners, and the source breakdown table showing how prior Auto DO / Auto late DO / Admin DO attempts have performed.</p>
+
+    <div class="frame-wrap">
+      <div class="cc-card">
+        <div class="cc-title">Eurest – Gaylord Opryland <span style="color:var(--gray-500);font-weight:500;">#28119</span></div>
+        <div class="cc-tags">
+          <span class="cc-tag danger">NEEDS ATTENTION</span>
+          <span class="cc-tag dark">LINE COOK</span>
+          <span class="cc-tag green">V3 MOBILE ON</span>
+          <span class="cc-tag gray">NO INDUSTRY CERTS</span>
+        </div>
+        <div class="cc-meta">07/13/2026, 7:00 pm (CDT) · 14m until start · Posted 1h 13m ago<br>Pro wage: $23.00/hr × 5.0h = $115 · +$15.00 boost (late cancellation)</div>
+        <div class="cc-alert danger">⚠ Last-minute callout — a confirmed pro cancelled within 4h of gig start. Match v3 has to re-fill the slot.</div>
+        <div class="cc-alert ok">✓ Auto match enabled</div>
+        <div class="cc-alert info hl">ⓘ Match has stopped sending late offers — pool too weak. 66 candidates remain but none meet both the quality and skill-fit thresholds. Top effective rank 4.7/10. <b>Consider an admin DO blast.</b></div>
+        <div class="cc-fill"><span>1/2 FILLED</span><div class="cc-fillbar"><div class="f" style="width:50%"></div></div><span style="color:var(--gray-500);font-weight:500;">1 OPEN</span></div>
+        <table class="tbl">
+          <tr><th>Source</th><th>Total</th><th>Selected</th><th>Confirmed</th><th>Cancelled</th></tr>
+          <tr><td>Auto DO</td><td>1</td><td>1</td><td>0</td><td>0</td></tr>
+          <tr><td>Auto late DO</td><td>127</td><td>124</td><td>1</td><td>2</td></tr>
+          <tr class="hl"><td>Admin DO</td><td>57</td><td>57</td><td>0</td><td>0</td></tr>
+        </table>
+      </div>
+      <div class="arrow-tag">That blue banner is your cue — the algorithm gave up, so it's time for a manual Direct Offer blast</div>
+    </div>
+  </section>
+
+  <!-- STEP 5 -->
+  <section class="step" id="step5">
+    <div class="step-head">
+      <div class="step-num">5</div>
+      <h2>Filter the candidate pool</h2>
+    </div>
+    <p class="step-desc">Scroll down to <b>Possible Matches</b> and click <b>Filters</b>. Set a minimum match score, a maximum distance, a minimum average rating, a minimum number of paid gigs, and a minimum cross-shift coefficient — this is the same quality bar Tableau's sliders gave you, built right into the candidate list.</p>
+
+    <div class="frame-wrap">
+      <div class="cc-filters-pop">
+        <div class="fl"><label>Minimum Match Score</label><div class="in">0–10</div></div>
+        <div class="fl"><label>Maximum Distance (miles)</label><div class="in">e.g. 25</div></div>
+        <div class="fl"><label>Minimum Avg Rating</label><div class="in">0–5</div></div>
+        <div class="fl"><label>Minimum Paid Gigs</label><div class="in">e.g. 5</div></div>
+        <div class="fl"><label>Minimum Cross-shift Coefficient</label><div class="in">0–1</div></div>
+      </div>
+    </div>
+    <div class="callout tip">Leaving a field blank means "no minimum" — start loose, then tighten the rating or distance filter if the list is too long to review.</div>
+  </section>
+
+  <!-- STEP 6 -->
+  <section class="step" id="step6">
+    <div class="step-head">
+      <div class="step-num">6</div>
+      <h2>Select pros and send offers in bulk</h2>
+    </div>
+    <p class="step-desc">Sort by <b>Combined score</b>, then either click <b>Send DO</b> on individual rows, or check the boxes next to several candidates and use the <b>Send DO</b> button at the top to blast offers to everyone selected at once — no CSV, no copy-pasting IDs.</p>
+
+    <div class="frame-wrap">
+      <div class="cc-bulkbar hl"><span>Sort: Combined score ▾</span><span><b>52 selected</b> · Send DO · Clear</span></div>
+      <div class="cc-row"><input type="checkbox" checked><div class="av"></div><div class="nm">Kenneth T.</div><span class="tg risky">Risky</span><span class="tg">Scored only</span><div class="meta2">3.0★ · 1 shift · 6.9 mi · combined 4.3</div><div class="send">Send DO</div></div>
+      <div class="cc-row"><input type="checkbox" checked><div class="av"></div><div class="nm">Jaida W.</div><span class="tg risky">Risky</span><span class="tg">Repeat</span><div class="meta2">3.0★ · 1 shift · 6.0 mi · combined 4.3</div><div class="send">Send DO</div></div>
+      <div class="cc-row"><input type="checkbox" checked><div class="av"></div><div class="nm">India J.</div><span class="tg risky">Risky</span><span class="tg">Repeat</span><div class="meta2">4.3★ · 3 shifts · 0.6 mi · combined 4.3</div><div class="send">Send DO</div></div>
+    </div>
+    <div class="callout tip">Command Center sends offers immediately and confirms selections in the same view — you don't need a separate "paste and send" step like the Tableau path.</div>
+    <div class="callout roadmap">One of the team’s longer-term ideas is to use the internal Admin Agent (the Qwick AI Assistant chat) to surface qualified pros directly, which would remove any Tableau dependency entirely and help us build product knowledge in a more scalable way. It currently only supports highlighting fields — not copying data out of the chat — so it is not ready to plug into this workflow yet, but it is worth tracking.</div>
+    <div class="frame-wrap">
+      <div class="cc-card" style="max-width:520px;">
+        <div class="cc-title">Admin Agent concept preview</div>
+        <div class="cc-meta">This is a roadmap concept, not a live workflow yet. The idea is that the admin agent could read the shift context and highlight the strongest candidates for review.</div>
+        <div style="border:1px solid var(--gray-200);border-radius:10px;padding:10px 12px;background:var(--gray-50);">
+          <div style="font-size:11px;font-weight:700;color:var(--gray-500);margin-bottom:8px;">Qwick AI Assistant</div>
+          <div style="border:1px solid var(--gray-200);border-radius:8px;padding:10px;background:#fff;">
+            <div style="font-size:11px;color:var(--green-dark);font-weight:700;margin-bottom:6px;">You:</div>
+            <div style="font-size:12px;color:var(--ink);margin-bottom:10px;">Find me 5 strong candidates for the Opryland dishwasher shift and highlight the best fit.</div>
+            <div style="font-size:11px;color:var(--gray-500);font-weight:700;margin-bottom:6px;">Assistant:</div>
+            <div style="font-size:12px;color:var(--ink);line-height:1.5;">
+              • India J. — 4.3★, 3 paid gigs, 0.6 mi<br>
+              • Jaida W. — 3.0★, 1 paid gig, 6.0 mi<br>
+              • Kenneth T. — 3.0★, 1 paid gig, 6.9 mi
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"><span class="line"></span><span class="lbl">Alternative path — building a list in Tableau</span></div>
+  <div class="alt-note">Use this path when Command Center's automated pool doesn't have enough qualified candidates, or when you need a much larger, fully custom list beyond what the matching algorithm surfaces.</div>
+
+  <!-- STEP 7 -->
+  <section class="step" id="step7">
+    <div class="step-head">
+      <div class="step-num">7</div>
       <h2>Open the Pro Export dashboard in Tableau</h2>
     </div>
     <p class="step-desc">In a new tab, go to <code>Explore → Qwick Internal → Pro Health → Pro Tracking</code> and select the <b>Pro Export</b> tab. This dashboard lets you build a custom list of pros filtered by market, skillset, and quality metrics.</p>
@@ -426,10 +592,10 @@
     </div>
   </section>
 
-  <!-- STEP 4 -->
-  <section class="step" id="step4">
+  <!-- STEP 8 -->
+  <section class="step" id="step8">
     <div class="step-head">
-      <div class="step-num">4</div>
+      <div class="step-num">8</div>
       <h2>Filter by market and skillset</h2>
     </div>
     <p class="step-desc">Set the <b>Market</b> filter to match the shift's location (e.g. <i>Los Angeles-Long Beach, CA</i>), then set the <b>Skillset Badge / Exp</b> filters to the position you're filling — in this case, <i>Dishwasher</i>.</p>
@@ -457,10 +623,10 @@
     <div class="callout tip">The Skillset Exp columns act as OR filters — set any of them to Dishwasher to catch pros with that experience in any slot.</div>
   </section>
 
-  <!-- STEP 5 -->
-  <section class="step" id="step5">
+  <!-- STEP 9 -->
+  <section class="step" id="step9">
     <div class="step-head">
-      <div class="step-num">5</div>
+      <div class="step-num">9</div>
       <h2>Narrow it down with quality sliders</h2>
     </div>
     <p class="step-desc">Use the sliders to only pull pros who meet your bar for reliability — for example, at least 1 paid gig, a 4.0+ average rating, and 80%+ completion rate, active within the <b>Last 90 days</b>.</p>
@@ -479,10 +645,10 @@
     </div>
   </section>
 
-  <!-- STEP 6 -->
-  <section class="step" id="step6">
+  <!-- STEP 10 -->
+  <section class="step" id="step10">
     <div class="step-head">
-      <div class="step-num">6</div>
+      <div class="step-num">10</div>
       <h2>Export the filtered list</h2>
     </div>
     <p class="step-desc">Click the <b>download icon</b> in the top toolbar and choose <b>Crosstab</b>. In the dialog, select the <b>Export File</b> sheet and download as <b>CSV</b> (or Excel).</p>
@@ -507,10 +673,10 @@
     </div>
   </section>
 
-  <!-- STEP 7 -->
-  <section class="step" id="step7">
+  <!-- STEP 11 -->
+  <section class="step" id="step11">
     <div class="step-head">
-      <div class="step-num">7</div>
+      <div class="step-num">11</div>
       <h2>Grab the Pro IDs from the exported file</h2>
     </div>
     <p class="step-desc">Open the downloaded file. The first column, <b>Id</b>, is the Pro ID for each row — this is the list you'll paste into the Direct Offer tool. Copy the full <b>Id</b> column (minus the header).</p>
@@ -530,10 +696,10 @@
     </div>
   </section>
 
-  <!-- STEP 8 -->
-  <section class="step" id="step8">
+  <!-- STEP 12 -->
+  <section class="step" id="step12">
     <div class="step-head">
-      <div class="step-num">8</div>
+      <div class="step-num">12</div>
       <h2>Open Shift Options for the shift</h2>
     </div>
     <p class="step-desc">Back in <b>View Shifts</b>, click the <b>⚙️ gear icon</b> on the shift row to open <b>Shift Options</b>. Scroll to the <b>Admin-only</b> section — this is where the Direct Offer tool lives.</p>
@@ -556,10 +722,10 @@
     </div>
   </section>
 
-  <!-- STEP 9 -->
-  <section class="step" id="step9">
+  <!-- STEP 13 -->
+  <section class="step" id="step13">
     <div class="step-head">
-      <div class="step-num">9</div>
+      <div class="step-num">13</div>
       <h2>Paste the Pro IDs and send the offer</h2>
     </div>
     <p class="step-desc">In the <b>Admin offer</b> modal, paste the Pro IDs you copied in Step 6 into the <b>Pro IDs</b> box — duplicates are removed automatically. Add an optional <b>Bonus</b> to sweeten the offer, review the checkboxes, then click <b>Send offer</b>.</p>
@@ -580,13 +746,13 @@
     </div>
   </section>
 
-  <!-- STEP 10 -->
-  <section class="step" id="step10">
+  <!-- STEP 14 -->
+  <section class="step" id="step14">
     <div class="step-head">
-      <div class="step-num">10</div>
+      <div class="step-num">14</div>
       <h2>Confirm the offers went out</h2>
     </div>
-    <p class="step-desc">You may see a yellow banner saying <b>"Some direct offers failed to send"</b> — that's expected when a few pasted IDs are ineligible, duplicate, or already assigned elsewhere; the rest still go through. Head to the shift's <b>Applicants</b> page to verify.</p>
+    <p class="step-desc">This applies whichever path you used. If you went the Tableau route, you may see a yellow banner saying <b>"Some direct offers failed to send"</b> — that's expected when a few pasted IDs are ineligible, duplicate, or already assigned elsewhere; the rest still go through. Head to the shift's <b>Applicants</b> page to verify.</p>
 
     <div class="frame-wrap" style="display:flex;flex-direction:column;gap:16px;">
       <div class="banner warn">⚠️ Some direct offers failed to send</div>
