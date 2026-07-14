@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How We Built This Website Guide</title>
+  <style>
+    :root {
+      --green: #0f9d58;
+      --green-dark: #0b7a44;
+      --ink: #111827;
+      --muted: #4b5563;
+      --line: #e5e7eb;
+      --bg: #f8faf8;
+      --card: #ffffff;
+      --blue: #2563eb;
+      --amber: #b45309;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--bg);
+    }
+    a { color: var(--green-dark); }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 0 24px 80px; }
+    .hero {
+      background: linear-gradient(135deg, #0b7a44 0%, #0f9d58 60%, #14b869 100%);
+      color: #fff;
+      padding: 64px 24px 72px;
+    }
+    .hero-inner { max-width: 980px; margin: 0 auto; }
+    .hero h1 { font-size: 38px; line-height: 1.2; margin: 0 0 12px; }
+    .hero p { font-size: 17px; max-width: 760px; margin: 0; opacity: 0.95; }
+    .pill-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    .pill { border: 1px solid rgba(255,255,255,.3); background: rgba(255,255,255,.15); padding: 8px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; box-shadow: 0 10px 30px rgba(0,0,0,.04); margin-top: 28px; }
+    h2 { font-size: 24px; margin-top: 0; }
+    h3 { font-size: 18px; margin-bottom: 10px; }
+    .grid { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; }
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    .checklist { padding-left: 18px; }
+    .checklist li { margin-bottom: 8px; }
+    .step { border-top: 1px solid var(--line); padding-top: 24px; margin-top: 24px; }
+    .step-number { display: inline-block; width: 32px; height: 32px; border-radius: 999px; background: var(--green); color: #fff; font-weight: 800; text-align: center; line-height: 32px; margin-right: 10px; }
+    .note { background: #eff6ff; border-left: 4px solid var(--blue); padding: 12px 14px; border-radius: 10px; color: #1d4ed8; font-size: 14px; }
+    .warning { background: #fff7ed; border-left: 4px solid var(--amber); padding: 12px 14px; border-radius: 10px; color: #9a2c00; font-size: 14px; }
+    .two-col { display: grid; gap: 16px; grid-template-columns: 1fr 1fr; align-items: start; }
+    @media (max-width: 760px) { .two-col { grid-template-columns: 1fr; } }
+    code { background: #f3f4f6; padding: 2px 6px; border-radius: 5px; font-size: 13px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { border-bottom: 1px solid var(--line); padding: 10px 8px; text-align: left; font-size: 14px; }
+    th { color: var(--muted); font-weight: 700; }
+    .footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 32px; }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>How We Built This Website Guide</h1>
+      <p>This is the direct, professional version of the setup guide. It explains the full process from a fresh computer to a published website, including the apps, tools, and steps we used.</p>
+      <div class="pill-row">
+        <span class="pill">Plain HTML site</span>
+        <span class="pill">No complex framework required</span>
+        <span class="pill">Free GitHub Pages hosting</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <section class="card">
+      <h2>What this guide is for</h2>
+      <p>This guide is for someone who is starting from zero. That includes someone who just downloaded Claude and does not yet have Visual Studio Code. The goal is simple: get from a new machine to a live website with clear instructions and no unnecessary complexity.</p>
+      <div class="note">If you already have Claude, that is helpful. But you still need Visual Studio Code to create, edit, and save the web files.</div>
+    </section>
+
+    <section class="card">
+      <h2>What you need</h2>
+      <div class="grid">
+        <div>
+          <h3>Required</h3>
+          <ul class="checklist">
+            <li>Visual Studio Code</li>
+            <li>A GitHub account</li>
+            <li>A browser such as Chrome, Edge, or Safari</li>
+            <li>A folder on your computer for the project</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Helpful but optional</h3>
+          <ul class="checklist">
+            <li>Claude for writing and refining content</li>
+            <li>GitHub Desktop if you want a simpler interface</li>
+            <li>Live Server extension in VS Code for easy preview</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>What we used for this project</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Purpose</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Visual Studio Code</td>
+            <td>Main editor for the website files</td>
+            <td>Required</td>
+          </tr>
+          <tr>
+            <td>Claude</td>
+            <td>Help with content, structure, and writing</td>
+            <td>Helpful</td>
+          </tr>
+          <tr>
+            <td>GitHub</td>
+            <td>Store the code and publish the site</td>
+            <td>Required</td>
+          </tr>
+          <tr>
+            <td>GitHub Pages</td>
+            <td>Free hosting for the finished website</td>
+            <td>Required</td>
+          </tr>
+          <tr>
+            <td>Browser</td>
+            <td>Preview and test the site</td>
+            <td>Required</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="warning" style="margin-top: 14px;">If you only have Claude and no Visual Studio Code, install Visual Studio Code first. Claude can assist with content, but it cannot replace the editor needed to save and manage the website files.</div>
+    </section>
+
+    <section class="card">
+      <h2>Step-by-step process</h2>
+
+      <div class="step">
+        <h3><span class="step-number">1</span>Install the tools</h3>
+        <p>Start with the essentials.</p>
+        <ul class="checklist">
+          <li>Download and install Visual Studio Code.</li>
+          <li>Create a GitHub account if you do not already have one.</li>
+          <li>If you use Claude, install it as well. It is optional, but useful for drafting content.</li>
+        </ul>
+        <div class="note">For this project, Visual Studio Code is the most important tool. Without it, you cannot properly edit the website files.</div>
+      </div>
+
+      <div class="step">
+        <h3><span class="step-number">2</span>Open a project folder in Visual Studio Code</h3>
+        <p>Create a folder on your computer for the website. Then open that folder in VS Code.</p>
+        <ul class="checklist">
+          <li>Choose a simple name such as <code>my-website</code>.</li>
+          <li>In VS Code, go to File → Open Folder.</li>
+          <li>Select the project folder you created.</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <h3><span class="step-number">3</span>Create the main file</h3>
+        <p>The website starts with one HTML file.</p>
+        <ul class="checklist">
+          <li>Create a file named <code>index.html</code>.</li>
+          <li>Place it directly inside the project folder.</li>
+          <li>Start with the basic structure: <code>&lt;!DOCTYPE html&gt;</code>, <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and <code>&lt;body&gt;</code>.</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <h3><span class="step-number">4</span>Build the page content</h3>
+        <p>For this type of site, the content is written directly into the HTML file. You can structure it with headings, sections, cards, buttons, and simple styling.</p>
+        <ul class="checklist">
+          <li>Add a title and short description.</li>
+          <li>Create sections for the overview, steps, and important notes.</li>
+          <li>Add simple CSS so the page looks clean and professional.</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <h3><span class="step-number">5</span>Preview the site locally</h3>
+        <p>You should check the page in a browser before publishing it.</p>
+        <ul class="checklist">
+          <li>Open the HTML file in your browser.</li>
+          <li>Confirm the layout, text, spacing, and styling look correct.</li>
+          <li>Make changes in VS Code and refresh the browser as needed.</li>
+        </ul>
+        <div class="note">If you want a smoother preview experience, install the Live Server extension in VS Code.</div>
+      </div>
+
+      <div class="step">
+        <h3><span class="step-number">6</span>Upload the website to GitHub</h3>
+        <p>Once the page looks correct, put it into GitHub so it can be published.</p>
+        <ul class="checklist">
+          <li>Open the project folder in VS Code.</li>
+          <li>Open the Source Control panel.</li>
+          <li>Stage the file, add a commit message, and push it to GitHub.</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <h3><span class="step-number">7</span>Publish with GitHub Pages</h3>
+        <p>This is the final step that makes the website live on the internet.</p>
+        <ul class="checklist">
+          <li>Go to your repository on GitHub.</li>
+          <li>Open Settings → Pages.</li>
+          <li>Choose the main branch as the source.</li>
+          <li>Save the settings and wait a few minutes for the site to publish.</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <h3><span class="step-number">8</span>Share the link</h3>
+        <p>Once GitHub Pages finishes, you will have a public URL for the website.</p>
+        <ul class="checklist">
+          <li>Use the GitHub Pages URL in Slack, email, or a document.</li>
+          <li>If the page does not update right away, wait a few minutes and refresh the page.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>What makes this approach simple</h2>
+      <div class="two-col">
+        <div>
+          <h3>Why this works</h3>
+          <ul class="checklist">
+            <li>It uses plain HTML, which is easy to learn and maintain.</li>
+            <li>GitHub Pages provides free hosting with minimal setup.</li>
+            <li>Visual Studio Code is enough to build and edit the site.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>What to remember</h3>
+          <ul class="checklist">
+            <li>Claude can help write content, but VS Code is still required.</li>
+            <li>GitHub is where the site is stored and published.</li>
+            <li>Keep the project folder organized and name files clearly.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">This guide is designed to be practical, direct, and easy to follow from a fresh setup.</div>
+  </div>
+</body>
+</html>
